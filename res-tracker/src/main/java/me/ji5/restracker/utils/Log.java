@@ -1,22 +1,3 @@
-/*
- * Project: ArtifactSample
- * module: common-utils
- *
- * Copyright (C) 2013~2014, Infobank. Corp. All Right Reserved.
- *
- * DO NOT COPY OR DISTRIBUTE WITHOUT PERMISSION OF THE AUTHOR
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and limitations under the License.
- *
- * Revision History
- * ----------------------------------------------------------
- * 2014/06/11 ohjongin 1.0.0 Initial creation with these template
- *
- * last modified : 2014/06/11 03:11PM
- */
 package me.ji5.restracker.utils;
 
 import android.content.Context;
@@ -74,6 +55,7 @@ public class Log {
 
     /**
      * Debug Mode를 끄면 모든 Log 메시지 출력을 하지 않는다.
+     *
      * @param isDebug
      */
     public static void setDebugMode(boolean isDebug) {

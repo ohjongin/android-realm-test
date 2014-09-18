@@ -1,22 +1,3 @@
-/*
- *
- *  * Copyright (C) 2013 Infobank. Corp. All Right Reserved.
- *  *
- *  * DO NOT COPY OR DISTRIBUTE WITHOUT PERMISSION OF THE AUTHOR
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- *  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- *  * License for the specific language governing permissions and limitations under
- *  * the License.
- *  *
- *  * Revision History
- *  * ----------------------------------------------------------
- *  * 2013/12/11  ohjongin    1.0.0    Initial creation with these template
- *  *
- *
- */
-
 package me.ji5.restracker.fragments;
 
 import android.content.Context;
