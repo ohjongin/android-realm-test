@@ -1,4 +1,4 @@
-package net.infobank.lab.tracker;
+package me.ji5.restracker;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

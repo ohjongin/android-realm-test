@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import net.infobank.lab.tracker.R;
-
-import me.ji5.restracker.OnFragmentInteractionListener;
+import me.ji5.restracker.R;
 
 public class MainFragment extends Fragment {
     private OnFragmentInteractionListener mListener;

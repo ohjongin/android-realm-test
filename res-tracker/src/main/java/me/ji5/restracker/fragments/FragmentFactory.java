@@ -24,9 +24,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import net.infobank.lab.tracker.R;
-
-import me.ji5.restracker.MainFragment;
+import me.ji5.restracker.R;
 
 /**
  * Created by ohjongin on 5/12/14.

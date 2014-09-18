@@ -1,10 +1,13 @@
 package me.ji5.restracker;
 
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import me.ji5.restracker.fragments.FragmentFactory;
+import me.ji5.restracker.fragments.OnFragmentInteractionListener;
 
 public class MainActivity extends ActionBarActivity implements OnFragmentInteractionListener {
     private FragmentFactory mFragmentFactory;
@@ -12,14 +15,14 @@ public class MainActivity extends ActionBarActivity implements OnFragmentInterac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(net.infobank.lab.tracker.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         if (mFragmentFactory == null) {
             mFragmentFactory = new FragmentFactory(this, getSupportFragmentManager());
         }
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(net.infobank.lab.tracker.R.id.container, mFragmentFactory.getFragment(0)).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container, mFragmentFactory.getFragment(0)).commit();
         }
     }
 
@@ -27,7 +30,7 @@ public class MainActivity extends ActionBarActivity implements OnFragmentInterac
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(net.infobank.lab.tracker.R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -39,7 +42,7 @@ public class MainActivity extends ActionBarActivity implements OnFragmentInterac
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == net.infobank.lab.tracker.R.id.action_settings) {
+        if (id == R.id.action_settings) {
             return true;
         }
 

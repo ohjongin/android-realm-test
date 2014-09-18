@@ -30,6 +30,7 @@ import java.util.List;
 
 import io.realm.RealmObject;
 import io.realm.annotations.RealmClass;
+import me.ji5.restracker.utils.Log;
 
 /**
  * Describe about this class here...

@@ -54,7 +54,6 @@ public class BatteryInfo extends RealmObject {
 
     public BatteryInfo(Intent intent) {
         fromIntent(intent);
-        // String temper = tenthsToFixedString(temperature);
     }
 
     public void fromIntent(Intent intent) {
