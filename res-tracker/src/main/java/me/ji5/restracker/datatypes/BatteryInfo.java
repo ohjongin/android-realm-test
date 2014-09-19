@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 
-import io.realm.RealmObject;
-import io.realm.annotations.RealmClass;
-
 /**
  * Describe about this class here...
  *
@@ -15,8 +12,7 @@ import io.realm.annotations.RealmClass;
  * @since 1.0
  * 14. 9. 17
  */
-@RealmClass
-public class BatteryInfo extends RealmObject {
+public class BatteryInfo {
     private int plugType;
     private int level;
     private int scale;
