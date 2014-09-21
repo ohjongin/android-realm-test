@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'maven'
-apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "me.ji5.restracker"
@@ -23,7 +22,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    apt fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':realm')
     compile 'com.android.support:appcompat-v7:20.0.0'
     compile 'com.android.support:support-v4:20.0.0'
 }

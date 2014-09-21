@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import io.realm.Realm;
-import io.realm.RealmList;
+import io.realm.RealmResults;
 import me.ji5.restracker.R;
 import me.ji5.restracker.datatypes.BatteryInfo;
 import me.ji5.restracker.datatypes.ResourceSnapshot;
@@ -133,7 +133,7 @@ public class MainFragment extends ListFragment implements View.OnClickListener {
     protected void onRefresh() {
         int sdk_int = Build.VERSION.SDK_INT;
 
-        RealmList<ResourceSnapshot> result = realm.where(ResourceSnapshot.class).findAll();
+        RealmResults<ResourceSnapshot> result = realm.where(ResourceSnapshot.class).findAll();
         ((ResSnapshotAdapter) getListAdapter()).clear();
         if (sdk_int < 11) {
             for (ResourceSnapshot rs : result) {

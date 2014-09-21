@@ -8,6 +8,7 @@ import android.text.TextUtils;
 
 import java.util.List;
 
+import io.realm.RealmObject;
 import me.ji5.restracker.utils.Log;
 
 /**
@@ -17,7 +18,7 @@ import me.ji5.restracker.utils.Log;
  * @since 1.0
  * 14. 9. 17
  */
-public class TrafficUsage {
+public class TrafficUsage extends RealmObject {
     protected Context mContext;
     protected String mPackageName;
     protected int mUid;
