@@ -7,23 +7,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.ListFragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import me.ji5.realmtest.GlobalConstants;
 import me.ji5.realmtest.R;
-import me.ji5.realmtest.fragments.dummy.DummyContent;
+import me.ji5.realmtest.adapters.ContactAdapter;
 import me.ji5.realmtest.model.Contact;
 import me.ji5.realmtest.model.Phone;
 
@@ -65,13 +68,10 @@ public class ContactListFragment extends ListFragment implements GlobalConstants
         RealmQuery<Contact> query = realm.where(Contact.class);
         RealmResults<Contact> result = query.findAll();
 
-        for (Contact contact : result) {
-            Log.e(TAG, contact.getDisplayName());
-        }
+        ArrayList<Contact> contactList = new ArrayList<Contact>();
+        contactList.addAll(result);
 
-        // TODO: Change Adapter to display your content
-        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS));
+        setListAdapter(new ContactAdapter(getActivity(), R.layout.list_item_contact, contactList));
     }
 
 
@@ -161,7 +161,6 @@ public class ContactListFragment extends ListFragment implements GlobalConstants
                     break;
                 }
 
-                //long contactId = c.getLong(c.getColumnIndex(ContactsContract.Contacts._ID));
                 long dbId = c.getLong(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone._ID));
                 String displayName = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                 String phoneNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
@@ -169,6 +168,23 @@ public class ContactListFragment extends ListFragment implements GlobalConstants
                 int photoId = c.getInt(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_ID));
 
                 Realm realm = Realm.getInstance(getActivity());
+
+                // Check duplication
+                RealmResults<Contact> results = realm.where(Contact.class).equalTo("displayName", displayName).findAll();
+                for (Contact item : results) {
+                    RealmList<Phone> phones = item.getPhones();
+                    if (phones.size() < 1) continue;
+
+                    for (Phone ph : phones) {
+                        if (ph == null || TextUtils.isEmpty(ph.getPhoneNumber())) continue;
+                        if (ph.getPhoneNumber().equals(phoneNumber)) {
+                            Toast.makeText(getActivity(), "Duplicated!!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                }
+
+                // Add new one
                 realm.beginTransaction();
 
                 Contact contact = realm.createObject(Contact.class);
@@ -185,6 +201,8 @@ public class ContactListFragment extends ListFragment implements GlobalConstants
                 realm.commitTransaction();
 
                 c.close();
+                ((ContactAdapter) getListAdapter()).add(contact);
+                ((ContactAdapter) getListAdapter()).notifyDataSetChanged();
                 break;
         }
     }
