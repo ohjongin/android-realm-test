@@ -1,0 +1,2 @@
+include ':realm'
+include ':realm-test-main'
