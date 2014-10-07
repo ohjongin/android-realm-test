@@ -40,3 +40,8 @@ build/
 
 # etc
 .DS_Store
+
+# crashtics
+crashlytics.properties
+crashlytics-build.properties
+com_crashlytics_export_strings.xml
